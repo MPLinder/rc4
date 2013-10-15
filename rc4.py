@@ -19,11 +19,12 @@ def initialize_S(K):
 
     return S
 
-def get_X(S, print_x=False):
+
+def get_X(S, length, print_x=False):
     i = 0
     j = 0
 
-    for x in xrange(len(S)):
+    for x in xrange(length):
         i = (i + 1) % 256
         j = (j + S[i]) % 256
         S[i], S[j] = S[j], S[i]
@@ -48,11 +49,10 @@ if __name__ == '__main__':
     K = initialize_K(key)
     S = initialize_S(K)
 
-    X = get_X(S, args.x)
+    X = get_X(S, len(args.message), args.x)
 
     ciphertext = []
     for char in args.message:
         ciphertext.append(chr(ord(char) ^ X.next()))
 
     print ''.join(ciphertext)
-
