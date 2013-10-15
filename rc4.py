@@ -7,7 +7,6 @@ def initialize_K(key):
     key = itertools.cycle(key)
     for i in xrange(256):
         K.append(key.next())
-
     return K
 
 
@@ -15,7 +14,7 @@ def initialize_S(K):
     S = range(256)
     j = 0
     for i in xrange(256):
-        j = (j + S[i] + K[1]) % 256
+        j = (j + S[i] + K[i]) % 256
         S[i], S[j] = S[j], S[i]
 
     return S
@@ -44,7 +43,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    key = [ord(k) for k in args.key]
+    key = [ord(k) - ord('0') for k in args.key]
 
     K = initialize_K(key)
     S = initialize_S(K)
