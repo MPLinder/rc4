@@ -36,7 +36,7 @@ def get_X(S, print_x=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Implements RC4 encryption.')
-    parser.add_argument('-k', '--key', type=str, default='54321', help='The key used for encryption.')
+    parser.add_argument('-k', '--key', type=str, default='12345', help='The key used for encryption.')
     parser.add_argument('-m', '--message', type=str, required=True, help='The message to be encrypted.')
     parser.add_argument('-x', dest='x', action='store_true', help='Whether or not to print out the X values.')
     parser.set_defaults(x=False)
